@@ -1,0 +1,25 @@
+﻿<h1>Volunteers</h1>
+<div class="col-md-6 col-md-offset-3">
+  <h3>All registered volunteers:</h3>
+  <input type="text" [(ngModel)]="filterText" />
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th># Hours</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vol of volunteers | paginate: {itemsPerPage: 10, currentPage:page}">
+        <td>{{vol.name}}</td>
+        <td>{{vol.totalhours}}</td>
+        <td>{{vol.status}}</td>
+        <td><a [routerLink]="['/vol-detail',vol.id]">View details</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <ngb-pagination [collectionSize]="volunteers.length" [(page)]="page" [boundaryLinks]="true" (pageChange)="onPageChange()"></ngb-pagination>
+ 
+</div>

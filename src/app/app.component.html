@@ -1,3 +1,15 @@
-<h1>
-  {{title}}
-</h1>
+﻿<nav class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+        <a class="navbar-brand">Volunteer Management</a>
+        <ul class="nav navbar-nav" routerLinkActive="active">
+            <li *ngIf="!isAuthenticated()" class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
+            <li *ngIf="!isAuthenticated()" class="nav-item"><a class="nav-link" routerLink="admin">Login</a></li>
+            <li *ngIf="isAuthenticated()" class="nav-item"><a class="nav-link" routerLink="volunteers">Volunteers List</a></li>
+            <li *ngIf="isAuthenticated()" class="nav-item"><a class="nav-link" routerLink="opportunities">Opportunity List</a></li>
+        </ul>
+        <button *ngIf="isAuthenticated()" class="btn navbar-btn navbar-right" routerLink="admin">Log out</button>
+    </div>
+</nav>
+<alert></alert>
+<!-- main app container -->
+<router-outlet></router-outlet>
